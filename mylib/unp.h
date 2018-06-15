@@ -28,6 +28,7 @@
 #include	<sys/wait.h>
 #include	<sys/un.h>		/* for Unix domain sockets */
 
+#define HAVE_MKSTEMP 1
 #ifdef	HAVE_SYS_SELECT_H
 # include	<sys/select.h>	/* for convenience */
 #endif
@@ -54,9 +55,7 @@
 /* Three headers are normally needed for socket/file ioctl's:
  * <sys/ioctl.h>, <sys/filio.h>, and <sys/sockio.h>.
  */
-#ifdef	HAVE_SYS_IOCTL_H
 # include	<sys/ioctl.h>
-#endif
 #ifdef	HAVE_SYS_FILIO_H
 # include	<sys/filio.h>
 #endif
