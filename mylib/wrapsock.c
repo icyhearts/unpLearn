@@ -25,7 +25,7 @@ Accept(int fd, struct sockaddr *sa, socklen_t *salenptr)
 
 again:
 	if ( (n = accept(fd, sa, salenptr)) < 0) {
-#ifdef	EPROTO
+#ifdef	EPROTO // in gentoo, EPROTO is defined
 		if (errno == EPROTO || errno == ECONNABORTED)
 #else
 		if (errno == ECONNABORTED)
