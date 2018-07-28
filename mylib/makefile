@@ -6,7 +6,7 @@ C_FLAGS=-fPIC -c -g
 else
 C_FLAGS=-fPIC -c
 endif
-LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../obj/wraplib.o ../obj/str_echo.o ../obj/str_cli.o ../obj/wrapstdio.o ../obj/readline.o ../obj/signal.o ../obj/readn.o
+LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../obj/wraplib.o ../obj/str_echo.o ../obj/str_cli.o ../obj/wrapstdio.o ../obj/readline.o ../obj/signal.o ../obj/readn.o ../obj/sock_ntop.o
 
 ../obj/libunp.so:${LIB_OBJS}
 	${CC} -shared -fPIC $^ -o $@
@@ -38,6 +38,8 @@ LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../o
 ../obj/signal.o:signal.c
 	${CC} ${C_FLAGS} $< -o $@
 ../obj/readn.o:readn.c
+	${CC} ${C_FLAGS} $< -o $@
+../obj/sock_ntop.o:sock_ntop.c
 	${CC} ${C_FLAGS} $< -o $@
 all:../obj/libunp.so
 	@echo "makeing all"

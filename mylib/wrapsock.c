@@ -176,7 +176,6 @@ Listen(int fd, int backlog)
 }
 /* end Listen */
 
-#ifdef	HAVE_POLL
 int
 Poll(struct pollfd *fdarray, unsigned long nfds, int timeout)
 {
@@ -187,7 +186,6 @@ Poll(struct pollfd *fdarray, unsigned long nfds, int timeout)
 
 	return(n);
 }
-#endif
 
 ssize_t
 Recv(int fd, void *ptr, size_t nbytes, int flags)
