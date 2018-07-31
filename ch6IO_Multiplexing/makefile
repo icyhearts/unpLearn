@@ -27,5 +27,7 @@ learn/${BIN_DIR}/n1tcpserverselect01.elf:learn/n1tcpserverselect01.c ${MYLIB_INC
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 learn/${BIN_DIR}/tcpservpoll01.elf:learn/tcpservpoll01.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/n5_test.elf:n5_test.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 clean:
 	rm -rf ${OBJ_DIR}/*.o ${BIN_DIR}/*.elf
