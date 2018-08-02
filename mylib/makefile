@@ -6,7 +6,8 @@ C_FLAGS=-fPIC -c -g
 else
 C_FLAGS=-fPIC -c
 endif
-LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../obj/wraplib.o ../obj/str_echo.o ../obj/str_cli.o ../obj/wrapstdio.o ../obj/readline.o ../obj/signal.o ../obj/readn.o ../obj/sock_ntop.o
+LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../obj/wraplib.o ../obj/str_echo.o ../obj/str_cli.o ../obj/wrapstdio.o ../obj/readline.o ../obj/signal.o ../obj/readn.o ../obj/sock_ntop.o\
+	../obj/dg_cli.o ../obj/dg_echo.o
 
 ../obj/libunp.so:${LIB_OBJS}
 	${CC} -shared -fPIC $^ -o $@
@@ -35,6 +36,10 @@ LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../o
 ../obj/readline.o:readline.c
 	${CC} ${C_FLAGS} $< -o $@
 
+../obj/dg_cli.o:dg_cli.c
+	${CC} ${C_FLAGS} $< -o $@
+../obj/dg_echo.o:dg_echo.c
+	${CC} ${C_FLAGS} $< -o $@
 ../obj/signal.o:signal.c
 	${CC} ${C_FLAGS} $< -o $@
 ../obj/readn.o:readn.c
