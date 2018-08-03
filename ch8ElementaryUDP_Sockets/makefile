@@ -19,6 +19,10 @@ learn/${BIN_DIR}/udpserv01.elf:learn/udpserv01.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 learn/${BIN_DIR}/udpcli01.elf:learn/udpcli01.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/n1_echoServerUDP.elf:n1_echoServerUDP.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/n2_echoClientUDP.elf:n2_echoClientUDP.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 
 ####
 learn/${BIN_DIR}/checkopts.elf:learn/checkopts.c ${MYLIB_INC_DIR}/unp.h
