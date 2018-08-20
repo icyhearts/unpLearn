@@ -1,5 +1,5 @@
 #include"unp.h"
-void dg_cli_self(FILE *fp, int sockfd, const SA* pservaddr, socklen_t servlen);
+void dg_cli_connect(FILE *fp, int sockfd, const SA* pservaddr, socklen_t servlen);
 int
 main(int argc, char **argv)
 {
@@ -16,19 +16,24 @@ main(int argc, char **argv)
 
 	sockfd		= Socket(AF_INET, SOCK_DGRAM, 0);
 
-	dg_cli_self(stdin, sockfd, (SA *)&servaddr, sizeof(servaddr));
+	dg_cli_connect(stdin, sockfd, (SA *)&servaddr, sizeof(servaddr));
 
 	exit(0);
 }
-void dg_cli_self(FILE *fp, int sockfd, const SA* pservaddr, socklen_t servlen)
+void dg_cli_connect(FILE *fp, int sockfd, const SA* pservaddr, socklen_t servlen)
 {
 	int		n;
 	char		sendline[MAXLINE], recvline[MAXLINE+1];
 
-	while(Fgets(sendline, MAXLINE, fp) != NULL){
-		Sendto(sockfd, sendline, strlen(sendline), 0, pservaddr, servlen);
-		n = Recvfrom(sockfd, recvline, MAXLINE, 0, NULL, NULL);
-		recvline[n] = 0;
+	Connect(sockfd, (SA*) pservaddr, servlen);
+	while(Fgets(sendline, MAXLINE, fp) != NULL ){
+		
+		Write(sockfd, sendline, strlen(sendline));
+
+		n = Read(sockfd, recvline, MAXLINE);
+
+		recvline[n] = 0; // null terminate
 		Fputs(recvline, stdout);
 	}
+
 }
