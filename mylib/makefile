@@ -7,7 +7,7 @@ else
 C_FLAGS=-fPIC -c
 endif
 LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../obj/wraplib.o ../obj/str_echo.o ../obj/str_cli.o ../obj/wrapstdio.o ../obj/readline.o ../obj/signal.o ../obj/readn.o ../obj/sock_ntop.o\
-	../obj/dg_cli.o ../obj/dg_echo.o ../obj/tcp_connect.o ../obj/sock_ntop_host.o
+	../obj/dg_cli.o ../obj/dg_echo.o ../obj/tcp_connect.o ../obj/sock_ntop_host.o ../obj/tcp_listen.o
 
 ../obj/libunp.so:${LIB_OBJS}
 	${CC} -shared -fPIC $^ -o $@
@@ -47,6 +47,8 @@ LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../o
 ../obj/sock_ntop.o:sock_ntop.c
 	${CC} ${C_FLAGS} $< -o $@
 ../obj/tcp_connect.o:tcp_connect.c
+	${CC} ${C_FLAGS} $< -o $@
+../obj/tcp_listen.o:tcp_listen.c
 	${CC} ${C_FLAGS} $< -o $@
 ../obj/sock_ntop_host.o:sock_ntop_host.c
 	${CC} ${C_FLAGS} $< -o $@
