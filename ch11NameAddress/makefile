@@ -24,5 +24,8 @@ ${BIN_DIR}/c11n3_fig11.13_daytimetcpsrv1.elf:c11n3_fig11.13_daytimetcpsrv1.c ${M
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 ${BIN_DIR}/c11n4_fig11.14_daytimetcpsrv2.elf:c11n4_fig11.14_daytimetcpsrv2.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+
+${BIN_DIR}/self2_daytimeClient_getaddrinfo.elf:self2_daytimeClient_getaddrinfo.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 clean:
 	rm -rf ${OBJ_DIR}/*.o ${BIN_DIR}/*.elf learn/bin/*.elf
