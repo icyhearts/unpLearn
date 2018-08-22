@@ -12,7 +12,7 @@ OBJ_DIR=obj
 
 MYLIB_LINK_DIR=../obj
 LINK_FLAGS=-L ${MYLIB_LINK_DIR} -lunp
-
+all:${BIN_DIR}/c11n1_fig11.3_hostent.elf ${BIN_DIR}/self1_gethostbyaddr.elf ${BIN_DIR}/c11n2_fig11.11_daytimetcpcli.elf ${BIN_DIR}/c11n3_fig11.13_daytimetcpsrv1.elf ${BIN_DIR}/c11n4_fig11.14_daytimetcpsrv2.elf 
 
 ${BIN_DIR}/c11n1_fig11.3_hostent.elf:c11n1_fig11.3_hostent.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
