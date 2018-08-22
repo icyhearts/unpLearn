@@ -21,7 +21,7 @@ tcp_connectSelf(const char *host, const char *serv, int sin6_scope_id)
 			continue;	/* ignore this one */
 		if(res->ai_family == AF_INET6){
 			v6addrp = (struct sockaddr_in6 *)res->ai_addr;
-			v6addrp->sin6_scope_id = 9;
+			v6addrp->sin6_scope_id = sin6_scope_id;
 		}
 		if (connect(sockfd, res->ai_addr, res->ai_addrlen) == 0)
 			break;		/* success */
