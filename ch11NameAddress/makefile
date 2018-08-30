@@ -24,6 +24,10 @@ ${BIN_DIR}/c11n3_fig11.13_daytimetcpsrv1.elf:c11n3_fig11.13_daytimetcpsrv1.c ${M
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 ${BIN_DIR}/c11n4_fig11.14_daytimetcpsrv2.elf:c11n4_fig11.14_daytimetcpsrv2.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/c11n5_fig11.16_daytimeudpcli1.elf:c11n5_fig11.16_daytimeudpcli1.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/c11n6_fig11.19_daytimeudpsrv2.elf:c11n6_fig11.19_daytimeudpsrv2.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 
 ${BIN_DIR}/self2_daytimeClient_getaddrinfo.elf:self2_daytimeClient_getaddrinfo.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
