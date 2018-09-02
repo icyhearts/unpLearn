@@ -5,6 +5,7 @@ udp_client_sin6_scope_id(const char *host, const char *serv, SA **saptr, socklen
 {
 	int				sockfd, n;
 	struct addrinfo	hints, *res, *ressave;
+	struct sockaddr_in6 * v6addrp;
 
 	bzero(&hints, sizeof(struct addrinfo));
 	hints.ai_family = AF_UNSPEC;
@@ -17,6 +18,10 @@ udp_client_sin6_scope_id(const char *host, const char *serv, SA **saptr, socklen
 
 	do {
 		sockfd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
+		if(res->ai_family == AF_INET6){
+			v6addrp = (struct sockaddr_in6 *)res->ai_addr;
+			v6addrp->sin6_scope_id = sin6_scope_id;
+		}
 		if (sockfd >= 0)
 			break;		/* success */
 	} while ( (res = res->ai_next) != NULL);
