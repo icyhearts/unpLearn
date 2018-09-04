@@ -1,7 +1,7 @@
 #include	"unp.h"
 
 int
-udp_connect_sin6_scope_id(const char *host, const char *serv, int sin6_scope_id)
+udp_connect_sin6_scope_id(const char *host, const char *serv, SA **saptr, socklen_t *lenp, int sin6_scope_id)
 {
 	int				sockfd, n;
 	struct addrinfo	hints, *res, *ressave;
@@ -33,6 +33,10 @@ udp_connect_sin6_scope_id(const char *host, const char *serv, int sin6_scope_id)
 	if (res == NULL)	/* errno set from final connect() */
 		err_sys("udp_connect error for %s, %s", host, serv);
 
+	*saptr = Malloc(res->ai_addrlen);
+	memcpy(*saptr, res->ai_addr, res->ai_addrlen);
+	*lenp = res->ai_addrlen;
+
 	freeaddrinfo(ressave);
 
 	return(sockfd);
@@ -43,18 +47,17 @@ main(int argc, char **argv)
 {
 	int				sockfd, n;
 	char			recvline[MAXLINE + 1];
-	struct sockaddr	sa;
+	struct sockaddr	*sa;
 	socklen_t		salen = sizeof(sa);
 
 	if (argc != 4)
 		err_quit("usage: %s <hostname/IPaddress> <service/port#> <sin6_scipe_id>", argv[0]);
 	int sin6_scope_id = atoi(argv[3]);
 
-	sockfd = udp_connect_sin6_scope_id(argv[1], argv[2], sin6_scope_id);
+	sockfd = udp_connect_sin6_scope_id(argv[1], argv[2], (SA **) &sa, &salen, sin6_scope_id );
 
 
-	Getpeername(sockfd, (SA*)&sa, &salen);
-	printf("sending to %s\n", Sock_ntop_host((SA*)&sa, salen));
+	printf("sending to %s\n", Sock_ntop_host(sa, salen));
 
 	Write(sockfd, "", 1);	/* send 1-byte datagram */
 

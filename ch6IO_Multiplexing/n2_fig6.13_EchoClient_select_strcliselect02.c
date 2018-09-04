@@ -1,5 +1,5 @@
 #include	"unp.h"
-
+// batch input
 void
 str_cli02(FILE *fp, int sockfd)
 {
