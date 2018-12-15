@@ -35,5 +35,7 @@ ${BIN_DIR}/c11n8_daytimetcpsrv4.elf:c11n8_daytimetcpsrv4.c ${MYLIB_INC_DIR}/unp.
 
 ${BIN_DIR}/self2_daytimeClient_getaddrinfo.elf:self2_daytimeClient_getaddrinfo.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/self3_daytimeClient_getaddrinfo_connect_timeo.elf:self3_daytimeClient_getaddrinfo_connect_timeo.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 clean:
 	rm -rf ${OBJ_DIR}/*.o ${BIN_DIR}/*.elf learn/bin/*.elf
