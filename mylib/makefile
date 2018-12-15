@@ -7,7 +7,7 @@ else
 C_FLAGS=-fPIC -c
 endif
 LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../obj/wraplib.o ../obj/str_echo.o ../obj/str_cli.o ../obj/wrapstdio.o ../obj/readline.o ../obj/signal.o ../obj/readn.o ../obj/sock_ntop.o\
-	../obj/dg_cli.o ../obj/dg_echo.o ../obj/tcp_connect.o ../obj/sock_ntop_host.o ../obj/tcp_listen.o ../obj/udp_server.o
+	../obj/dg_cli.o ../obj/dg_echo.o ../obj/tcp_connect.o ../obj/sock_ntop_host.o ../obj/tcp_listen.o ../obj/udp_server.o ../obj/daemon_init.o  ../obj/connect_timeo.o
 
 ../obj/libunp.so:${LIB_OBJS}
 	${CC} -shared -fPIC $^ -o $@
@@ -36,6 +36,9 @@ LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../o
 ../obj/readline.o:readline.c
 	${CC} ${C_FLAGS} $< -o $@
 
+../obj/daemon_init.o:daemon_init.c
+	${CC} ${C_FLAGS} $< -o $@
+
 ../obj/dg_cli.o:dg_cli.c
 	${CC} ${C_FLAGS} $< -o $@
 ../obj/dg_echo.o:dg_echo.c
@@ -53,6 +56,8 @@ LIB_OBJS=../obj/error.o ../obj/wrapsock.o ../obj/writen.o ../obj/wrapunix.o ../o
 ../obj/sock_ntop_host.o:sock_ntop_host.c
 	${CC} ${C_FLAGS} $< -o $@
 ../obj/udp_server.o:udp_server.c
+	${CC} ${C_FLAGS} $< -o $@
+../obj/connect_timeo.o:connect_timeo.c
 	${CC} ${C_FLAGS} $< -o $@
 all:../obj/libunp.so
 	@echo "makeing all"

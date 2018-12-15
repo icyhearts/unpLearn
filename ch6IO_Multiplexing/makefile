@@ -35,6 +35,8 @@ ${BIN_DIR}/self3_epoll-example.elf:self3_epoll-example.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 ${BIN_DIR}/self4_epollTCPServerClient.elf:self4_epollTCPServerClient.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/self5_epollConstant.elf:self5_epollConstant.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 learn/${BIN_DIR}/n1tcpserverselect01.elf:learn/n1tcpserverselect01.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 learn/${BIN_DIR}/tcpservpoll01.elf:learn/tcpservpoll01.c ${MYLIB_INC_DIR}/unp.h
