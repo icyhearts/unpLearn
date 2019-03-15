@@ -35,6 +35,12 @@ ${BIN_DIR}/n7_udpcli09.elf:n7_udpcli09.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 ${BIN_DIR}/n8_tcp_udpservselect01.elf:n8_tcp_udpservselect01.c ${MYLIB_INC_DIR}/unp.h
 	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/n9_dgclitimeo3.elf:n9_dgclitimeo3.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/n10_dgclitimeo1.elf:n10_dgclitimeo1.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
+${BIN_DIR}/n11_dgclitimeo2.elf:n11_dgclitimeo2.c ${MYLIB_INC_DIR}/unp.h
+	${CC} $< ${C_FLAGS}  ${LINK_FLAGS} -o $@ 
 
 ####
 learn/${BIN_DIR}/checkopts.elf:learn/checkopts.c ${MYLIB_INC_DIR}/unp.h

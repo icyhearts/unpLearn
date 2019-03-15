@@ -1,4 +1,7 @@
 #include	"unp.h"
+/*
+ * use connect_timeo in page 382
+ */
 
 int
 tcp_connectSelf(const char *host, const char *serv, int sin6_scope_id)

@@ -36,15 +36,15 @@ n3_learnIO.elf:n3_learnIO.c
 
 ${BIN_DIR}/n4_fig5.4TcpEchoClient.elf:n4_fig5.4TcpEchoClient.c ${MYLIB_INC_DIR}/unp.h
 	${CC} ${C_FLAGS} ${LINK_FLAGS} $<  -o $@
-n5_tcpserverSigchld.elf:n5_tcpserverSigchld.c ${MYLIB_INC_DIR/unp.h}
+${BIN_DIR}/n5_tcpserverSigchld.elf:n5_tcpserverSigchld.c ${MYLIB_INC_DIR/unp.h}
 	${CC} ${C_FLAGS} ${LINK_FLAGS} $<  -o $@
-n6_fig5.9Tcpcli04.elf:n6_fig5.9Tcpcli04.c ${MYLIB_INC_DIR/unp.h}
+${BIN_DIR}/n6_fig5.9Tcpcli04.elf:n6_fig5.9Tcpcli04.c ${MYLIB_INC_DIR/unp.h}
 	${CC} ${C_FLAGS} ${LINK_FLAGS} $<  -o $@
-n7_fig5.12Tcpserv04.elf:n7_fig5.12Tcpserv04.c ${MYLIB_INC_DIR/unp.h}
+${BIN_DIR}/n7_fig5.12Tcpserv04.elf:n7_fig5.12Tcpserv04.c ${MYLIB_INC_DIR/unp.h}
 	${CC} ${C_FLAGS} ${LINK_FLAGS} $<  -o $@
-n8_fig5.14Str_cli11.elf:n8_fig5.14Str_cli11.c ${MYLIB_INC_DIR/unp.h}
+${BIN_DIR}/n8_fig5.14Str_cli11.elf:n8_fig5.14Str_cli11.c ${MYLIB_INC_DIR/unp.h}
 	${CC} ${C_FLAGS} ${LINK_FLAGS} $<  -o $@
-n9_errorLearn.elf:n9_errorLearn.c ${MYLIB_INC_DIR/unp.h}
+${BIN_DIR}/n9_errorLearn.elf:n9_errorLearn.c ${MYLIB_INC_DIR/unp.h}
 	${CC} ${C_FLAGS} ${LINK_FLAGS} $<  -o $@
 ${BIN_DIR}/n10_fig5.17_EchoServerStr_echo08.elf:n10_fig5.17_EchoServerStr_echo08.c ${MYLIB_INC_DIR/unp.h}
 	${CC} ${C_FLAGS} ${LINK_FLAGS} $<  -o $@
