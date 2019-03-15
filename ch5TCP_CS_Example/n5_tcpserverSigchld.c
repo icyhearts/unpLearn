@@ -1,4 +1,5 @@
 #include"unp.h"
+#define MYDEBUG
 
 int 
 main(int argc, char **argv)
@@ -8,6 +9,7 @@ main(int argc, char **argv)
 	socklen_t clilen;
 	struct sockaddr_in cliaddr, servaddr;
 	void sig_chld(int);
+	char *cli_str = malloc(128);
 	if(argc != 2){
 	printf("usage: ./server <portNumber>\n");
 	exit(1);
@@ -30,7 +32,10 @@ main(int argc, char **argv)
 	for(;;){
 		clilen = sizeof(cliaddr);
 		connfd = Accept(listenfd, (SA*)&cliaddr, &clilen);
-
+#ifdef MYDEBUG
+		cli_str = Sock_ntop(&cliaddr, clilen);
+		printf("connection from|%s|\n", cli_str);
+#endif
 		if( (childpid = Fork()) == 0){
 			Close(listenfd);
 			str_echo(connfd);
