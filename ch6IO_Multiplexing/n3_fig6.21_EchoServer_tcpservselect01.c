@@ -19,9 +19,9 @@ main(int argc, char **argv)
 	struct sockaddr_in	cliaddr, servaddr;
 
 	listenfd = Socket(AF_INET, SOCK_STREAM, 0);
-#ifdef MYDEBUG
+	#ifdef MYDEBUG
 	printf("listenfd=%d, FD_SETSIZE=%d\n", listenfd, FD_SETSIZE);
-#endif
+	#endif
 	bzero(&servaddr, sizeof(servaddr));
 	servaddr.sin_family      = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -40,9 +40,9 @@ main(int argc, char **argv)
 /* end fig01 */
 
 	struct timeval tv_start, tv_stop;
-#ifdef MYDEBUG
+	#ifdef MYDEBUG
 		int accu = 0;
-#endif
+	#endif
 /* include fig02 */
 	for ( ; ; ) {
 		rset = allset;		/* structure assignment */
@@ -87,101 +87,101 @@ main(int argc, char **argv)
 		printf(" before select, line %d, accumulated sockfd total number in set= %d\n", __LINE__, accu);
 #endif
 		if (FD_ISSET(listenfd, &rset)) {	/* new client connection */
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 		printf("new connection connected \n");
-#endif
+		#endif
 			clilen = sizeof(cliaddr);
 			connfd = Accept(listenfd, (SA *) &cliaddr, &clilen);
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 		printf("connfd = %d\n", connfd);
-#endif
-#ifdef MYDEBUG
+		#endif
+		#ifdef MYDEBUG
 		if (FD_ISSET(listenfd, &rset)) {	/* new client connection */
 			printf("line %d, after Accept, listenfd is set\n", __LINE__);
 		}else{
 			printf("line %d, after Accept, listenfd is NOT set\n", __LINE__);
 		}
-#endif
-#ifdef	NOTDEF
+		#endif
+		#ifdef	NOTDEF
 			char dst[16];
 			printf("new client: %s, port %d\n",
 					Inet_ntop(AF_INET, &cliaddr.sin_addr, dst, sizeof(dst)),
 					ntohs(cliaddr.sin_port));
-#endif
+		#endif
 
 			for (i = 0; i < FD_SETSIZE; i++)
 				if (client[i] < 0) {
 					client[i] = connfd;	/* save descriptor */
 					break;
 				}
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 			for(int idx=0; idx < FD_SETSIZE; ++ idx){
 				if(client[idx] >= 0){
 					printf("client[%d]=%d ",idx, client[idx]);
 				}
 			}
 			printf("\n");
-#endif
+		#endif
 			if (i == FD_SETSIZE)
 				err_quit("too many clients");
 
 			FD_SET(connfd, &allset);	/* add new descriptor to set */
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 		if (FD_ISSET(listenfd, &rset)) {	/* new client connection */
 			printf("line %d,  after FD_SET(connfd) , listenfd is set\n", __LINE__);
 		}else{
 			printf("line %d, after FD_SET(connfd), listenfd is NOT set\n", __LINE__);
 		}
-#endif
+		#endif
 			if (connfd > maxfd)
 				maxfd = connfd;			/* for select */
 			if (i > maxi)
 				maxi = i;				/* max index in client[] array */
 
 			if (--nready <= 0){
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 				printf("line=%d, after --nready, nready=%d\n", __LINE__, nready);
-#endif
+		#endif
 				continue;				/* no more readable descriptors */
 			}
 		}
 
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 		if (FD_ISSET(listenfd, &rset)) {	/* new client connection */
 			printf("line %d, before read from client, listenfd is set\n", __LINE__);
 		}else{
 			printf("line %d, before read from client, listen is NOT set\n", __LINE__);
 		}
-#endif
+		#endif
 		for (i = 0; i <= maxi; i++) {	/* check all clients for data */
 			if ( (sockfd = client[i]) < 0)
 				continue;
 			if (FD_ISSET(sockfd, &rset)) {
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 				printf("BEFORE call Read\n");
-#endif
+		#endif
 				if ( (n = Read(sockfd, buf, MAXLINE)) == 0) {
 						/*4connection closed by client */
 					Close(sockfd);
 					FD_CLR(sockfd, &allset);
 					client[i] = -1;
 				} else
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 				printf("AFTER  Read returns, BEFORE call Writen, n=Read()=%d\n", n);
-#endif
+		#endif
 					Writen(sockfd, buf, n);
 
 				if (--nready <= 0)
 					break;				/* no more readable descriptors */
 			}
 		}
-#ifdef MYDEBUG
+		#ifdef MYDEBUG
 		if (FD_ISSET(listenfd, &rset)) {	/* new client connection */
 			printf("line %d, after read from client, listenfd is set\n", __LINE__);
 		}else{
 			printf("line %d, after read from client , listenfd is NOT set\n", __LINE__);
 		}
-#endif
+		#endif
 	}
 }
 /* end fig02 */

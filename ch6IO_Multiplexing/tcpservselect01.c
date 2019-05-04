@@ -35,7 +35,6 @@ main(int argc, char **argv)
 	for ( ; ; ) {
 		rset = allset;		/* structure assignment */
 		nready = Select(maxfd+1, &rset, NULL, NULL, NULL);
-
 		if (FD_ISSET(listenfd, &rset)) {	/* new client connection */
 			clilen = sizeof(cliaddr);
 			connfd = Accept(listenfd, (SA *) &cliaddr, &clilen);
