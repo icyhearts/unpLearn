@@ -6,4 +6,4 @@ git add gitadd.sh mylib/*.c ch1Introduction/c1n*.c ch1Introduction/fig*.c mylib/
 	ch1Introduction/fig*.c ch1Introduction/makefile ch11NameAddress/c11n*.c ch11NameAddress/makefile ch11NameAddress/self*.c\
 	ch6IO_Multiplexing/self*.c*
 git add ch16NonblockingIO/{n[0-9]*.c,makefile}
-git add ch4_elementary_tcp_sockets/*.c
+git add ch4_elementary_tcp_sockets/*.c ch4_elementary_tcp_sockets/makefile
